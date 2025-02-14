@@ -1,12 +1,3 @@
-def centralizar(texto, borda, MX):
-    tamanhoTexto = deColorLen(texto)
-    fix = 0
-    if tamanhoTexto % 2 != 0: fix = 1
-
-    espacos = int((MX - tamanhoTexto) / 2)
-    print(f"{borda * espacos} {texto} {borda * (espacos + fix)}")
-
-
 def deColorLen(texto):
     if texto[0] == '\x1b':
         texto = texto[5:-5]
@@ -23,3 +14,30 @@ def colorizar(texto, cor):
         return texto
 
     return f"{cores[cor]}{texto}{cores["clear"]}"
+
+
+class configCentralizar:
+
+    def __init__(self, MX, borda):
+        self.MX = MX
+        self.borda = borda
+
+    def centralizar(self, texto, ):
+        tamanhoTexto = deColorLen(texto)
+        fix = 0
+        if tamanhoTexto % 2 != 0: fix = 1
+
+        espacos = int((self.MX - tamanhoTexto) / 2)
+        print(f"{self.borda * espacos} {texto} {self.borda * (espacos + fix)}")
+
+
+class configColorizar:
+    def __init__(self, cor):
+        if cor not in ['rosa', 'azul', 'verde', 'amarelo', 'vermelho', 'clear']:
+            raise CorInexistente
+
+        self.cor = cor
+
+
+class CorInexistente(Exception):
+    pass
