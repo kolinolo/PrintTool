@@ -19,3 +19,25 @@ para colorizar:
 
   autoPrint: deve ser True ou False, parâmetro opicional, False por padrão. Se True, a função printa o texto colorizado, se false a função RETORNA o texto colorizado 
   
+============================================================================================
+
+Centralizar:
+
+centraliza um texto na tela:
+    
+    exemplo:
+
+            titulo = printTool.configCentralizar(20,"-").centralizar
+            titulo("Um texto")
+
+            saida:
+            
+                ------ Um texto ------
+Parametros:
+
+    configCentralizar(MX: int , borda: str)
+
+MX: um numero inteiro que representa o tamanho da linha aonde o texto vai estar
+
+borda: uma string que representa o character que sera usado para criar a borda
+    
