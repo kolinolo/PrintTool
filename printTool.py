@@ -5,15 +5,6 @@ def deColorLen(texto):
     return len(texto)
 
 
-def colorizar(texto, cor):
-    cores = {'rosa': '\033[95m', 'azul': '\033[94m', 'verde': '\033[92m', 'amarelo': '\033[93m',
-             'vermelho': '\033[91m',
-             'clear': '\033[0m', }
-
-    if cor not in cores:
-        return texto
-
-    return f"{cores[cor]}{texto}{cores["clear"]}"
 
 
 class configCentralizar:
@@ -32,11 +23,27 @@ class configCentralizar:
 
 
 class configColorizar:
-    def __init__(self, cor):
+    def __init__(self, cor, autoPrint=False):
         if cor not in ['rosa', 'azul', 'verde', 'amarelo', 'vermelho', 'clear']:
             raise CorInexistente
 
         self.cor = cor
+        self.autoPrint = autoPrint
+
+
+    def colorizar(self, texto):
+        cores = {'rosa': '\033[95m', 'azul': '\033[94m', 'verde': '\033[92m', 'amarelo': '\033[93m',
+                 'vermelho': '\033[91m',
+                 'clear': '\033[0m', }
+
+        if self.cor not in cores:
+            return texto
+
+        if self.autoPrint:
+            print(f"{cores[self.cor]}{texto}{cores["clear"]}")
+
+        else:
+            return f"{cores[self.cor]}{texto}{cores["clear"]}"
 
 
 class CorInexistente(Exception):
