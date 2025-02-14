@@ -37,7 +37,7 @@ class configColorizar:
                  'clear': '\033[0m', }
 
         if self.cor not in cores:
-            return texto
+            raise CorInexistente(f"Cor {self.cor} invalida")
 
         if self.autoPrint:
             print(f"{cores[self.cor]}{texto}{cores["clear"]}")
